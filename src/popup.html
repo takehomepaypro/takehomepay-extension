@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<title>UK Take Home Pay Calculator</title>
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header class="top">
+  <img src="icons/icon-48.png" alt="" width="28" height="28">
+  <div>
+    <h1>UK Take Home Pay</h1>
+    <p>Salary after tax, NI, pension and student loan</p>
+  </div>
+</header>
+
+<main>
+  <section class="result" aria-live="polite">
+    <div class="big"><span id="r-month">£0</span><small>a month</small></div>
+    <div class="sub"><span id="r-year">£0</span> a year · <span id="r-week">£0</span> a week</div>
+  </section>
+
+  <form id="f" autocomplete="off">
+    <div class="row two">
+      <label>Salary<input id="salary" type="number" inputmode="decimal" min="0" step="any" value="35000"></label>
+      <label>Paid<select id="period">
+        <option value="annual">per year</option>
+        <option value="monthly">per month</option>
+        <option value="weekly">per week</option>
+        <option value="hourly">per hour</option>
+      </select></label>
+    </div>
+    <label id="hours-wrap" hidden>Hours a week<input id="hours" type="number" min="1" max="100" step="any" value="37.5"></label>
+
+    <div class="row two wide">
+      <label>You pay tax in<select id="region">
+        <option value="england">England, Wales, NI</option>
+        <option value="scotland">Scotland</option>
+      </select></label>
+      <label>Tax year<select id="year">
+        <option value="2627">2026/27</option>
+        <option value="2526">2025/26</option>
+        <option value="2425">2024/25</option>
+      </select></label>
+    </div>
+
+    <div class="row two">
+      <label>Student loan<select id="loan">
+        <option value="">None</option>
+        <option value="plan1">Plan 1</option>
+        <option value="plan2">Plan 2</option>
+        <option value="plan4">Plan 4 (Scotland)</option>
+        <option value="plan5">Plan 5</option>
+        <option value="postgrad">Postgraduate</option>
+      </select></label>
+      <label>Tax code<input id="code" type="text" value="1257L" maxlength="12" spellcheck="false"></label>
+    </div>
+
+    <div class="row two">
+      <label>Pension %<input id="penpct" type="number" min="0" max="100" step="any" value="0"></label>
+      <label>Pension type<select id="pentype">
+        <option value="sacrifice">Salary sacrifice</option>
+        <option value="gross">Net pay (workplace)</option>
+        <option value="personal">Relief at source</option>
+        <option value="auto">Auto enrolment minimum</option>
+      </select></label>
+    </div>
+  </form>
+
+  <table class="bd" aria-label="Yearly breakdown">
+    <tbody>
+      <tr><th>Gross pay</th><td id="b-gross">£0</td></tr>
+      <tr><th>Income Tax</th><td id="b-tax" class="neg">£0</td></tr>
+      <tr><th>National Insurance</th><td id="b-ni" class="neg">£0</td></tr>
+      <tr id="row-loan" hidden><th>Student loan</th><td id="b-loan" class="neg">£0</td></tr>
+      <tr id="row-pen" hidden><th>Pension</th><td id="b-pen" class="neg">£0</td></tr>
+      <tr class="tot"><th>Take-home pay</th><td id="b-net">£0</td></tr>
+    </tbody>
+  </table>
+  <p class="note" id="marginal"></p>
+
+  <a id="full" class="cta" href="https://takehomepaypro.co.uk/" target="_blank" rel="noopener">See the full breakdown on TakeHomePayPro</a>
+  <div class="links">
+    <a href="https://takehomepaypro.co.uk/nhs-take-home-pay-calculator/" target="_blank" rel="noopener">NHS pay calculator</a>
+    <a href="https://takehomepaypro.co.uk/hourly-wage-calculator/" target="_blank" rel="noopener">Hourly wage calculator</a>
+  </div>
+</main>
+
+<footer>Estimates only, using HMRC and Scottish Government rates. <a href="https://takehomepaypro.co.uk/" target="_blank" rel="noopener">takehomepaypro.co.uk</a></footer>
+
+<script src="engine.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>
